@@ -1,0 +1,48 @@
+#write a function to find the largest palindrome number made from the product of two 3-digit numbers.
+
+def palin_func():
+    
+    def palin(num):
+        l = len(str(num))
+        rev_num = 0
+        n = num
+        for i in range(l):
+            dum = n % 10
+            ##print(dum)
+            rev_num = rev_num *10 + int(dum)
+            ##print(rev_num) 
+            n = int(n / 10)
+        if rev_num == num:
+            return "True"
+        else:
+            return "False"
+        
+    def mul_num(num):
+        i=999
+        while i>900:
+            if num%i == 0:
+                #print(num)
+                #print(i,"Got the palindrome")
+                j = num/i
+                if i<999 and j<999:
+                    print("Found",num,i,j)
+                    break
+                else:
+                    #print("Not Found",i,j)
+                    i=i-1
+            else:
+                i=i-1
+    
+    i=998001
+    while i>900000:
+        palin(i)
+        if palin(i) == "True":
+            ##print(i)
+            mul_num(i)
+            i=i-1
+        else:
+            #print("not palindrome")
+            i=i-1
+            
+
+palin_func()
